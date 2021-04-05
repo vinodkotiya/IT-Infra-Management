@@ -1,0 +1,202 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Security.Cryptography;
+using System.Text;
+using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+
+namespace PROPERTY_RETURNS.Account
+{
+    public partial class chkuid : System.Web.UI.Page
+    {
+        static string conn = ConfigurationManager.ConnectionStrings["PRConnectionString"].ConnectionString.ToString();
+        SqlConnection con = new SqlConnection(conn);
+        static string connerp = ConfigurationManager.ConnectionStrings["ERPConnectionString"].ConnectionString.ToString();
+        //SqlConnection conerp = new SqlConnection(connerp);
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //string encrypted = Encrypt("Something to decrypt");
+            //Label1.Text = encrypted;
+
+            //string decrypted = Decrypt("encrypted");
+            //Label2.Text = decrypted;
+
+            HttpCookie myCookie_r = new HttpCookie("NTPCSSO");
+            myCookie_r = Request.Cookies["NTPCSSO"];
+
+            if (myCookie_r!= null)
+            {
+                string dval = Decrypt(myCookie_r.Value.ToString().Replace("\"", ""));
+                //string dval = Decrypt(myCookie_r.Value.ToString());
+                //Label1.Text = dval;
+                string empno = dval.Substring(9, 6);
+                redirectuser(empno);
+               // string cookieName;
+              //  int limit = Request.Cookies.Count;
+              //  for (int i = 0; i < limit; i++)
+               // {
+                 //   cookieName = Request.Cookies[i].Name;
+                   // myCookie_r = new HttpCookie(cookieName);
+                    //myCookie_r.Expires = DateTime.Now.AddDays(-1); // make it expire yesterday
+                    //Response.Cookies.Add(myCookie_r); // overwrite it
+                    //HttpContext.Current.Request.Cookies.Clear();
+                //}
+                Response.Redirect("../dateSelection.aspx");
+            }
+            //Console.Out.WriteLine("Press any key to continue");
+            //Console.ReadKey();
+        }
+        protected void redirectuser(string uid)
+        {
+            string fname = "";
+            string lname = "";
+            string uname = "";
+            string ugrade = "";
+            string udept = "";
+            string upayarea = "";
+            string pernr = "";
+            pernr = "00" + uid;
+            //conerp.Open();
+            //string getuser = "select * from M_USER where PERNR='" + uid + "'";
+            //if (con.State != ConnectionState.Open)
+            //{
+            //    con.Close();
+            //    con.Open();
+            //}
+            //SqlCommand cmd = new SqlCommand(getuser, con);
+            //SqlDataReader reader;
+            //reader = cmd.ExecuteReader();
+
+
+            //if (reader.HasRows)
+            //{
+                //while (reader.Read())
+                //{
+                    string checkuser = "select FIRSTNAME,LASTNAME,GRADE,DEPT,PAYAREA from EMPMASTER where PERNR='" + pernr + "'";
+                    using (SqlConnection conerp = new SqlConnection(connerp))
+                    {
+                        try
+                        {
+                            if (conerp.State != ConnectionState.Open)
+                            {
+                                conerp.Close();
+                                conerp.Open();
+                            }
+                            SqlCommand cmderp = new SqlCommand(checkuser, conerp);
+                            SqlDataReader reader1;
+                            reader1 = cmderp.ExecuteReader();
+                            if (reader1.HasRows)
+                            {
+                                while (reader1.Read())
+                                {
+                                    fname = reader1.GetString(0);
+                                    lname = reader1.GetString(1);
+                                    ugrade = reader1.GetString(2);
+                                    udept = reader1.GetString(3);
+                                    upayarea = reader1.GetString(4);
+                                    uname = fname + " " + lname;
+                                    Session["id"] = uid;
+                                    string empno = "00000000" + uid;
+                                    Session["emp"] = empno.Substring(empno.Length - 8);
+                                    Session["name"] = uname;
+                                    Session["grade"] = ugrade;
+                                    Session["dept"] = udept;
+                                    Session["plantcd"] = upayarea;
+                                    //        }
+
+                                    //    }
+
+                                }
+                            }
+                            // conerp.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            //Handle exception, perhaps log it and do the needful
+                            fndisplay(ex.Message);
+                        }
+                    }
+
+        }
+
+
+        private static string Encrypt(string raw)
+        {
+            using (var csp = new AesCryptoServiceProvider())
+            {
+                ICryptoTransform e = GetCryptoTransform(csp, true);
+                byte[] inputBuffer = Encoding.UTF8.GetBytes(raw);
+                byte[] output = e.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
+
+                string encrypted = Convert.ToBase64String(output);
+
+                return encrypted;
+            }
+        }
+
+        public static string Decrypt(string encrypted)
+        {
+            using (var csp = new AesCryptoServiceProvider())
+            {
+                var d = GetCryptoTransform(csp, false);
+                byte[] output = Convert.FromBase64String(encrypted);
+                byte[] decryptedOutput = d.TransformFinalBlock(output, 0, output.Length);
+
+                string decypted = Encoding.UTF8.GetString(decryptedOutput);
+                return decypted;
+            }
+        }
+
+        private static ICryptoTransform GetCryptoTransform(AesCryptoServiceProvider csp, bool encrypting)
+        {
+            csp.Mode = CipherMode.CBC;
+            csp.Padding = PaddingMode.PKCS7;
+            var passWord = "EPSSO@TGRE545815SKJ";
+            var salt = "thisisthes@ltforpropertyreturn@pplication";
+
+            //a random Init. Vector. just for testing
+            String iv = "e675f725e675f725";
+
+            var spec = new Rfc2898DeriveBytes(Encoding.UTF8.GetBytes(passWord), Encoding.UTF8.GetBytes(salt), 65536);
+            byte[] key = spec.GetBytes(16);
+
+
+            csp.IV = Encoding.UTF8.GetBytes(iv);
+            csp.Key = key;
+            if (encrypting)
+            {
+                return csp.CreateEncryptor();
+            }
+            return csp.CreateDecryptor();
+        }
+
+        //Database Connection Open Function
+        //public void ConnectionOpen()
+        //{
+        //    if (conerp.State == ConnectionState.Closed)
+        //    {
+        //        conerp.Open();
+        //    }
+        //}
+
+        ////Database Connection Close Function
+        //public void ConnectionClose()
+        //{
+        //    if (conerp.State == ConnectionState.Open)
+        //    {
+        //        conerp.Close();
+        //    }
+
+        //}
+        protected void fndisplay(string msg)
+        {
+            lblcatch.Text = msg;
+        }
+    }
+}

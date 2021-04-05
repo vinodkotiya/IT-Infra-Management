@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://vinodkotiya.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://vinodkotiya.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://vinodkotiya.com/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sayhelloname">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sayhellonameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sayhellonameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updatefileCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updatefileCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updatefileCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserControlHTML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="controlpath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="doctype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserControlHTMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserControlHTMLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserControlHTML1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="controlpath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserControlHTML1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserControlHTML1Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkSession">
+        <s:complexType />
+      </s:element>
+      <s:element name="checkSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="displaySession">
+        <s:complexType />
+      </s:element>
+      <s:element name="displaySessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="displaySessionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setUserSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setUserSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setUserSessionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="clearSession">
+        <s:complexType />
+      </s:element>
+      <s:element name="clearSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clearSessionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authenticateuserAjax">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authenticateuserAjaxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authenticateuserAjaxResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRating">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRatingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRatingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNetwork">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNetworkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNetworkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIPxy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clickedX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clickedY" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIPxyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getIPxyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pingIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ipaddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pingIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pingIPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="imageData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getControlwithData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doctype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getControlwithDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getControlwithDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVCCalander">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myQuery" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVCCalanderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVCCalanderResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authenticateuser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authenticateuserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authenticateuserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompletionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prefixText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompletionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompletionListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="sayhellonameSoapIn">
+    <wsdl:part name="parameters" element="tns:sayhelloname" />
+  </wsdl:message>
+  <wsdl:message name="sayhellonameSoapOut">
+    <wsdl:part name="parameters" element="tns:sayhellonameResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatefileCountSoapIn">
+    <wsdl:part name="parameters" element="tns:updatefileCount" />
+  </wsdl:message>
+  <wsdl:message name="updatefileCountSoapOut">
+    <wsdl:part name="parameters" element="tns:updatefileCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserControlHTMLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserControlHTML" />
+  </wsdl:message>
+  <wsdl:message name="GetUserControlHTMLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserControlHTMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserControlHTML1SoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserControlHTML1" />
+  </wsdl:message>
+  <wsdl:message name="GetUserControlHTML1SoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserControlHTML1Response" />
+  </wsdl:message>
+  <wsdl:message name="checkSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:checkSession" />
+  </wsdl:message>
+  <wsdl:message name="checkSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:checkSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="setSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:setSession" />
+  </wsdl:message>
+  <wsdl:message name="setSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:setSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="displaySessionSoapIn">
+    <wsdl:part name="parameters" element="tns:displaySession" />
+  </wsdl:message>
+  <wsdl:message name="displaySessionSoapOut">
+    <wsdl:part name="parameters" element="tns:displaySessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="setUserSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:setUserSession" />
+  </wsdl:message>
+  <wsdl:message name="setUserSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:setUserSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="clearSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:clearSession" />
+  </wsdl:message>
+  <wsdl:message name="clearSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:clearSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="authenticateuserAjaxSoapIn">
+    <wsdl:part name="parameters" element="tns:authenticateuserAjax" />
+  </wsdl:message>
+  <wsdl:message name="authenticateuserAjaxSoapOut">
+    <wsdl:part name="parameters" element="tns:authenticateuserAjaxResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRatingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRating" />
+  </wsdl:message>
+  <wsdl:message name="GetRatingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNetwork" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNetworkResponse" />
+  </wsdl:message>
+  <wsdl:message name="getIPxySoapIn">
+    <wsdl:part name="parameters" element="tns:getIPxy" />
+  </wsdl:message>
+  <wsdl:message name="getIPxySoapOut">
+    <wsdl:part name="parameters" element="tns:getIPxyResponse" />
+  </wsdl:message>
+  <wsdl:message name="pingIPSoapIn">
+    <wsdl:part name="parameters" element="tns:pingIP" />
+  </wsdl:message>
+  <wsdl:message name="pingIPSoapOut">
+    <wsdl:part name="parameters" element="tns:pingIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadImageSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="UploadImageSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getControlwithDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getControlwithData" />
+  </wsdl:message>
+  <wsdl:message name="getControlwithDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getControlwithDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVCCalanderSoapIn">
+    <wsdl:part name="parameters" element="tns:getVCCalander" />
+  </wsdl:message>
+  <wsdl:message name="getVCCalanderSoapOut">
+    <wsdl:part name="parameters" element="tns:getVCCalanderResponse" />
+  </wsdl:message>
+  <wsdl:message name="authenticateuserSoapIn">
+    <wsdl:part name="parameters" element="tns:authenticateuser" />
+  </wsdl:message>
+  <wsdl:message name="authenticateuserSoapOut">
+    <wsdl:part name="parameters" element="tns:authenticateuserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompletionListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompletionList" />
+  </wsdl:message>
+  <wsdl:message name="GetCompletionListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompletionListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="vinserviceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sayhelloname">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">say hello with name</wsdl:documentation>
+      <wsdl:input message="tns:sayhellonameSoapIn" />
+      <wsdl:output message="tns:sayhellonameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updatefileCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">say hello with name1</wsdl:documentation>
+      <wsdl:input message="tns:updatefileCountSoapIn" />
+      <wsdl:output message="tns:updatefileCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserControlHTML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">getUserControl</wsdl:documentation>
+      <wsdl:input message="tns:GetUserControlHTMLSoapIn" />
+      <wsdl:output message="tns:GetUserControlHTMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserControlHTML1">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">getUserControl</wsdl:documentation>
+      <wsdl:input message="tns:GetUserControlHTML1SoapIn" />
+      <wsdl:output message="tns:GetUserControlHTML1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkSession">
+      <wsdl:input message="tns:checkSessionSoapIn" />
+      <wsdl:output message="tns:checkSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setSession">
+      <wsdl:input message="tns:setSessionSoapIn" />
+      <wsdl:output message="tns:setSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="displaySession">
+      <wsdl:input message="tns:displaySessionSoapIn" />
+      <wsdl:output message="tns:displaySessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setUserSession">
+      <wsdl:input message="tns:setUserSessionSoapIn" />
+      <wsdl:output message="tns:setUserSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="clearSession">
+      <wsdl:input message="tns:clearSessionSoapIn" />
+      <wsdl:output message="tns:clearSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="authenticateuserAjax">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">authenticateuserAjax</wsdl:documentation>
+      <wsdl:input message="tns:authenticateuserAjaxSoapIn" />
+      <wsdl:output message="tns:authenticateuserAjaxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRating">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">getRating</wsdl:documentation>
+      <wsdl:input message="tns:GetRatingSoapIn" />
+      <wsdl:output message="tns:GetRatingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">GetNetwork</wsdl:documentation>
+      <wsdl:input message="tns:GetNetworkSoapIn" />
+      <wsdl:output message="tns:GetNetworkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getIPxy">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">getIPxy</wsdl:documentation>
+      <wsdl:input message="tns:getIPxySoapIn" />
+      <wsdl:output message="tns:getIPxySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="pingIP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">pingIP</wsdl:documentation>
+      <wsdl:input message="tns:pingIPSoapIn" />
+      <wsdl:output message="tns:pingIPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">UploadImage</wsdl:documentation>
+      <wsdl:input message="tns:UploadImageSoapIn" />
+      <wsdl:output message="tns:UploadImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getControlwithData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">getControlwithData</wsdl:documentation>
+      <wsdl:input message="tns:getControlwithDataSoapIn" />
+      <wsdl:output message="tns:getControlwithDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVCCalander">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">authenticateuser</wsdl:documentation>
+      <wsdl:input message="tns:getVCCalanderSoapIn" />
+      <wsdl:output message="tns:getVCCalanderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="authenticateuser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">authenticateuser</wsdl:documentation>
+      <wsdl:input message="tns:authenticateuserSoapIn" />
+      <wsdl:output message="tns:authenticateuserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompletionList">
+      <wsdl:input message="tns:GetCompletionListSoapIn" />
+      <wsdl:output message="tns:GetCompletionListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="vinserviceSoap" type="tns:vinserviceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://vinodkotiya.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayhelloname">
+      <soap:operation soapAction="http://vinodkotiya.com/sayhelloname" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatefileCount">
+      <soap:operation soapAction="http://vinodkotiya.com/updatefileCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserControlHTML">
+      <soap:operation soapAction="http://vinodkotiya.com/GetUserControlHTML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserControlHTML1">
+      <soap:operation soapAction="http://vinodkotiya.com/GetUserControlHTML1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSession">
+      <soap:operation soapAction="http://vinodkotiya.com/checkSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSession">
+      <soap:operation soapAction="http://vinodkotiya.com/setSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displaySession">
+      <soap:operation soapAction="http://vinodkotiya.com/displaySession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setUserSession">
+      <soap:operation soapAction="http://vinodkotiya.com/setUserSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clearSession">
+      <soap:operation soapAction="http://vinodkotiya.com/clearSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateuserAjax">
+      <soap:operation soapAction="http://vinodkotiya.com/authenticateuserAjax" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRating">
+      <soap:operation soapAction="http://vinodkotiya.com/GetRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <soap:operation soapAction="http://vinodkotiya.com/GetNetwork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIPxy">
+      <soap:operation soapAction="http://vinodkotiya.com/getIPxy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pingIP">
+      <soap:operation soapAction="http://vinodkotiya.com/pingIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <soap:operation soapAction="http://vinodkotiya.com/UploadImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getControlwithData">
+      <soap:operation soapAction="http://vinodkotiya.com/getControlwithData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVCCalander">
+      <soap:operation soapAction="http://vinodkotiya.com/getVCCalander" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateuser">
+      <soap:operation soapAction="http://vinodkotiya.com/authenticateuser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompletionList">
+      <soap:operation soapAction="http://vinodkotiya.com/GetCompletionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="vinserviceSoap12" type="tns:vinserviceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://vinodkotiya.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayhelloname">
+      <soap12:operation soapAction="http://vinodkotiya.com/sayhelloname" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatefileCount">
+      <soap12:operation soapAction="http://vinodkotiya.com/updatefileCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserControlHTML">
+      <soap12:operation soapAction="http://vinodkotiya.com/GetUserControlHTML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserControlHTML1">
+      <soap12:operation soapAction="http://vinodkotiya.com/GetUserControlHTML1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSession">
+      <soap12:operation soapAction="http://vinodkotiya.com/checkSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSession">
+      <soap12:operation soapAction="http://vinodkotiya.com/setSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displaySession">
+      <soap12:operation soapAction="http://vinodkotiya.com/displaySession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setUserSession">
+      <soap12:operation soapAction="http://vinodkotiya.com/setUserSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clearSession">
+      <soap12:operation soapAction="http://vinodkotiya.com/clearSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateuserAjax">
+      <soap12:operation soapAction="http://vinodkotiya.com/authenticateuserAjax" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRating">
+      <soap12:operation soapAction="http://vinodkotiya.com/GetRating" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetwork">
+      <soap12:operation soapAction="http://vinodkotiya.com/GetNetwork" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIPxy">
+      <soap12:operation soapAction="http://vinodkotiya.com/getIPxy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pingIP">
+      <soap12:operation soapAction="http://vinodkotiya.com/pingIP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <soap12:operation soapAction="http://vinodkotiya.com/UploadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getControlwithData">
+      <soap12:operation soapAction="http://vinodkotiya.com/getControlwithData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVCCalander">
+      <soap12:operation soapAction="http://vinodkotiya.com/getVCCalander" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateuser">
+      <soap12:operation soapAction="http://vinodkotiya.com/authenticateuser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompletionList">
+      <soap12:operation soapAction="http://vinodkotiya.com/GetCompletionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="vinservice">
+    <wsdl:port name="vinserviceSoap" binding="tns:vinserviceSoap">
+      <soap:address location="http://10.0.236.251/ccit/vinservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="vinserviceSoap12" binding="tns:vinserviceSoap12">
+      <soap12:address location="http://10.0.236.251/ccit/vinservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
